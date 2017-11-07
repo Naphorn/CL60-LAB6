@@ -5,14 +5,13 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            Student su = new Student("Student Name", "12345678");
+            Student su = new Student("Student", "12345678");
             try
             {
                 // su.Name = "My name";
-                su.GPA = 4.5f;
-                Console.WriteLine("Student name : " + su.Name);
-                Console.WriteLine("Student ID   : " + su.ID);
-                Console.WriteLine("Student GPA  : " + su.GPA);
+                su.salary = 320;
+                Console.WriteLine("StudentID : " + su.StudentID);
+                Console.WriteLine("Salary  : " + su.salary);
             }
             catch (Exception e)
             {
@@ -21,38 +20,34 @@ namespace ConsoleApp5
             Console.ReadLine();
         }
     }
-    class Student
+
+    class TraineeStudent
     {
-        private string name;
-        private string id;
-        private float gpa;
+        private string StudentID;
+        private float salary;
 
-        public Student(string Name, string ID)
+        public TraineeStudent(string StudentID)
         {
-            this.name = Name;   // assign auto variable to the field
-            this.id = ID;
+            this.StudentID = StudentID;   // assign auto variable to the field
         }
 
-        public string Name
+        public string StudentID
         {
-            get { return name; }
+            get { return StudentID; }
         }
-        public string ID
-        {
-            get { return id; }
-        }
-        public float GPA
+        
+        public float salary
         {
             get
             {
-                return gpa;
+                return salary;
             }
             set
             {
-                if (value > 0.0 && value <= 4.0)
-                    gpa = value;
+                if (value > 300 && value <= 450)
+                    salary = value;
                 else
-                    throw (new Exception("Error!!!! invalid GPA"));
+                    throw (new Exception("Error!!!! invalid salary"));
             }
         }
     }
