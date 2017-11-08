@@ -25,14 +25,46 @@ namespace Part02
             protected float billingRate;
         }
 
-        static void Main(string[] args)
+        class Professor : Teacher
         {
-            Teacher teacher = new Teacher("Tom", 350f);
-            // teacher work for 20Hr/month
-            Console.WriteLine("{0} charge = {1}", teacher.TypeName(),
-                teacher.CalculateCharge(20f));
-            Console.ReadLine();
-        }
+            private float emolument;  // เงินประจำตำแหน่ง
 
+            public Professor(string name, float billingRate) : base(name, billingRate)
+            {
+            }
+
+            public Professor(string name, float billingRate, float emolument)
+            : this(name, billingRate)
+            {
+                this.emolument = emolument;
+            }
+
+            // new function, because it's different than the base version
+            public new float CalculateCharge(float hours)
+            {
+                if (hours < 1.0F)
+                    hours = 1.0F; // minimum charge.
+                return (hours * billingRate) + emolument;
+            }
+            // new function, because it's different than the base version
+            public new string TypeName()
+            {
+                return ("Professor");
+            }
+
+            static void Main(string[] args)
+            {
+                Teacher teacher = new Teacher("Tom", 350f);
+                Professor prof = new Professor("Jerry", 500f, 5000f);
+                // teacher work 20Hr/month
+                Console.WriteLine("{0} charge = {1}", teacher.TypeName(),
+                    teacher.CalculateCharge(20f));
+                // professor work 12Hr/month
+                Console.WriteLine("{0} charge = {1}", prof.TypeName(),
+                    prof.CalculateCharge(12F));
+                Console.ReadLine();
+            }
+        }
     }
 }
+
