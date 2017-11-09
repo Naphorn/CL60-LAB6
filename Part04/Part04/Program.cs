@@ -5,13 +5,12 @@ namespace Part04
     {
         static void Main(string[] args)
         {
-            Person p = new Professor();
+            Student p = new Professor();
             p.SayHi();
             Console.ReadKey();
         }
-
-
     }
+
     class Person
     {
         public virtual void SayHi()
